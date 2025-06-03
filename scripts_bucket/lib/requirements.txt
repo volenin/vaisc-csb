@@ -1,0 +1,8 @@
+google-auth
+google-cloud-retail
+google-cloud-bigquery
+google-cloud-storage
+google-cloud-core
+google-api-python-client
+grpcio
+protobuf

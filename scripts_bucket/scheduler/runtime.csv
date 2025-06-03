@@ -1,0 +1,5 @@
+script,timeout,schedule
+run_search.sh,1800s,*/5 * * * *
+generate_user_events.sh,1800s,*/5 * * * *
+import_user_events_from_gcs.sh,1800s,*/5 * * * *
+import_products_from_bq.sh,1800s,*/5 * * * *
