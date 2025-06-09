@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "Debug Jupyter Notebook",
+      "program": "${input:notebookPath}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "notebookPath",
+      "description": "Select a Jupyter notebook to debug",
+      "options": [
+        "${workspaceFolder}/vaisc-csb/notebooks/vaisc_advanced_search.ipynb",
+        "${workspaceFolder}/vaisc-csb/notebooks/vaisc_data_management.ipynb",
+        "${workspaceFolder}/vaisc-csb/notebooks/vaisc_intro_lab.ipynb",
+        "${workspaceFolder}/vaisc-csb/notebooks/vaisc_starter.ipynb",
+        "${workspaceFolder}/vaisc-csb/colab-ent-intro/colab_ent_overview.ipynb"
+      ]
+    }
+  ]
+}
