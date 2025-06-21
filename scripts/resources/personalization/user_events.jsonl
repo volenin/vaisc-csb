@@ -1,0 +1,6 @@
+{"eventType": "purchase", "user_info": {"userId": "user-jane-90210", "visitorId": "session-past-e4a1c"}, "eventTime": "2025-05-22T17:35:51.147231Z", "documents": [{"product": {"id": "SKU-SS-TENT-04"}, "quantity": 1}]}
+{"eventType": "search", "user_info": {"userId": "user-jane-90210", "visitorId": "session-recent-f5b2d"}, "eventTime": "2025-06-14T17:35:51.147275Z", "searchQuery": "SummitStone gear"}
+{"eventType": "detail-page-view", "user_info": {"userId": "user-jane-90210", "visitorId": "session-recent-f5b2d"}, "eventTime": "2025-06-14T17:36:51.147280Z", "documents": [{"product": {"id": "SKU-SS-TENT-04"}}]}
+{"eventType": "detail-page-view", "user_info": {"userId": "user-jane-90210", "visitorId": "session-recent-f5b2d"}, "eventTime": "2025-06-14T17:37:51.147283Z", "documents": [{"product": {"id": "SKU-SS-BOOTS-01"}}]}
+{"eventType": "add-to-cart", "user_info": {"userId": "user-jane-90210", "visitorId": "session-recent-f5b2d"}, "eventTime": "2025-06-14T17:38:51.147285Z", "documents": [{"product": {"id": "SKU-SS-BOOTS-01"}, "quantity": 1}]}
+{"eventType": "purchase", "user_info": {"userId": "user-jane-90210", "visitorId": "session-recent-f5b2d"}, "eventTime": "2025-06-14T17:40:51.147287Z", "documents": [{"product": {"id": "SKU-SS-BOOTS-01"}, "quantity": 1}]}
