@@ -9,13 +9,6 @@ resource "google_bigquery_dataset" "dataset2" {
   depends_on = [google_project_service.enabled_apis]
 }
 
-# Creating GCS bucket
-resource "google_storage_bucket" "retail_bucket" {
-  name          = "${var.gcp_project_id}-retail"
-  location      = "US"
-  depends_on = [google_project_service.enabled_apis]
-}
-
 # Creating BQ tables
 resource "google_bigquery_table" "retail_products_table" {
   deletion_protection = false
@@ -131,11 +124,4 @@ resource "google_bigquery_job" "job2" {
 #   }
 #   depends_on = [google_project_service.enabled_apis]
 # }
-
-resource "google_project_service" "enabled_apis" {
-  for_each           = toset(var.enable_apis)
-  project            = var.gcp_project_id
-  service            = each.value
-  disable_on_destroy = false
-}
 
