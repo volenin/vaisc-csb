@@ -4,10 +4,24 @@
 
 In this lab, you will learn how to:
 
-* TODO: update this section with the learning objectives of the lab as a bullet list.
+* Enable Vertex AI Search for commerce API and accept terms of use
+* Import product catalog and user event data into Vertex AI Search for commerce
+* Create and configure serving configurations for advanced search functionality
+* Implement boosting controls to influence search ranking based on business rules
+* Set up redirect controls to guide users to specific pages for targeted search terms
+* Create synonym controls to improve search comprehension and broaden results
+* Use product pinning to promote specific items in search results
+* Configure replacement controls to suppress irrelevant search terms
+* Apply filter controls to refine search results based on specific conditions
+* Evaluate and compare different search configurations side-by-side
 
 ## **Overview**
-TODO: update this section with a description of the lab and the tasks you will perform.
+
+In this lab, you will implement advanced search features using Vertex AI Search for commerce through the Google Cloud Console UI. You'll start by enabling the service and importing sample product catalog data along with user event data that simulates customer behavior patterns. 
+
+The lab focuses on configuring various search controls to enhance the user experience and align search results with business objectives. You'll work with hiking and camping gear products from two fictional brands (SummitStone and TrailBlazer) and learn how to influence search ranking through boosting controls, redirect users for specific brand searches, create synonyms to improve search comprehension, pin important products to top positions, suppress irrelevant terms, and filter results based on categories.
+
+Throughout the lab, you'll use the Google Cloud Console's evaluation tools to test and compare different configurations, demonstrating how each control affects search behavior. By the end of this lab, you'll have hands-on experience with the key features that make search experiences more relevant, personalized, and business-aligned.
 
 ## **Task 1. Enable Vertex AI Search for commerce and accept use terms**
 Before you can begin using Vertex AI Search for commerce, you must enable the API and accept the terms of use.
