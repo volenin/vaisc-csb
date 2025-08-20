@@ -1,0 +1,24 @@
+
+Task 3: search for 'hiking boots'
+BEFORE: trailblazer first, summitstone second
+AFTER:  'summit stone' will be first instead of trailblazer
+
+Task 4: search for 'adidas'.
+BEFORE: no results
+AFTER:  'redirect' message
+
+Task 5: search for 'travel' and 'camping'
+BEFORE: camping returns 'tent', 'travel' returns no results
+AFTER:  both return 'tent'
+
+Task 6: search for 'camping gear' or 'anything'. 
+BEFORE: will either get 4 products back OR no results (for 'anyhthing'). 
+AFTER:  backpack is at first position always
+
+Task 7: search for 'mountain boots'. 
+BEFORE: 2 items returned
+AFTER:  none
+
+Task 8: search for 'camping gear'
+BEFORE: 4 items return (2 of them - boots)
+AFTER:  only 2 items - backpack and tent, no boots
