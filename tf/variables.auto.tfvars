@@ -1,4 +1,4 @@
-gcp_project_id = "artilekt-vaisc-csb"
+gcp_project_id = "roi-vaisc-csb-08"
 gcp_region    = "us-central1"
 gcp_zone      = "us-central1-a"
 
@@ -29,5 +29,5 @@ scripts_extensions = {
   sh = ["/bin/bash"]
   py = ["python3"]
 }
-scripts_cr_image   = "gcr.io/google.com/cloudsdktool/cloud-sdk:slim"
+scripts_cr_image   = "google/cloud-sdk:latest"
 scripts_cr_timeout = 1200

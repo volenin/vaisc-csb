@@ -61,6 +61,12 @@ resource "google_cloud_run_v2_job" "script_jobs" {
         command = var.scripts_extensions[each.value.extension]
         args    = ["/mnt/scripts-bucket/${each.value.full_path}"]
         working_dir = "/mnt/scripts-bucket/${dirname(each.value.full_path)}"
+        resources {
+          limits = {
+            cpu    = "2"
+            memory = "2Gi"
+          }
+        }
         volume_mounts {
           name       = "scripts-bucket-mount"
           mount_path = "/mnt/scripts-bucket"

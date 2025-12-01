@@ -56,6 +56,15 @@ locals {
   ])
   scheduler_jobs = [ for job in local._scheduler_jobs :
     { for k, v in job : trimspace(k) => trimspace(v) }]
+
+  # Create indexed list with order preserved for sequential dependencies
+  scheduler_jobs_ordered = [for idx, job in local.scheduler_jobs : merge(job, { index = idx })]
+
+  # Create map keyed by cr_name for the resource for_each
+  scheduler_jobs_map = {
+    for job in local.scheduler_jobs_ordered :
+    job.cr_name => job if contains(keys(local.script_jobs), job.cr_name)
+  }
 }
 
 resource "google_service_account" "sa_cr_runner" {
@@ -70,11 +79,16 @@ resource "google_project_iam_member" "sa_cr_runner_invoker" {
   member  = google_service_account.sa_cr_runner.member
 }
 
+# Note: terraform_data cannot create a true dependency chain within for_each
+# The Google provider already has built-in retry logic for 409 errors
+# Combined with increased timeout, this should handle most cases
+
 resource "google_cloud_scheduler_job" "script_scheduler" {
-  for_each = { for job in local.scheduler_jobs : job.cr_name => job if contains(keys(local.script_jobs), job.cr_name) }
-  # Ensure the job name is unique and valid
+  for_each = local.scheduler_jobs_map
+  # Job name without prefix - Cloud Run and Cloud Scheduler are in different namespaces
   name             = each.value.cr_name
   project          = var.gcp_project_id
+  region           = var.gcp_region
   description      = "Trigger Cloud Run job ${each.value.script} as defined in scheduler CSV [${each.value.csv_file}] (md5sum: ${md5(each.value.sha512)})"
   schedule         = each.value.schedule
   time_zone        = "Etc/UTC"
@@ -96,6 +110,22 @@ resource "google_cloud_scheduler_job" "script_scheduler" {
     oauth_token {
       service_account_email = google_service_account.sa_cr_runner.email
     }
+  }
+
+  depends_on = [
+    google_project_service.enabled_apis["cloudscheduler.googleapis.com"],
+    google_cloud_run_v2_job.script_jobs
+  ]
+
+  lifecycle {
+    create_before_destroy = false
+  }
+
+  # Add timeouts to handle API rate limiting
+  timeouts {
+    create = "10m"
+    update = "10m"
+    delete = "10m"
   }
 
 }
